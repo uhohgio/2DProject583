@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonHelp : MonoBehaviour
 {
     public GameObject pauseMenu;
+
+    void Start() {
+        pauseMenu.gameObject.SetActive(false);
+    }
 // functions for buttons in the game
     public void TogglePauseMenu()
     {
@@ -18,10 +23,8 @@ public class ButtonHelp : MonoBehaviour
                 {
                     pauseMenu.gameObject.SetActive(false);
                 }
-                
             } 
         }
-        
     }
     public void ExitGame()
     {
