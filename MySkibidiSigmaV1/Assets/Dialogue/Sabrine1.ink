@@ -1,20 +1,7 @@
-INCLUDE Stacy1.ink
 VAR auracount = 0
-VAR playerName = "Y/N"
+VAR playerName = "You"
 VAR xp = 0
-VAR firstConvo = -> first // in logic cases we need to call a pointer variable for some reason
-// VAR secondConvo = -> second
-// VAR thirdConvo = -> third
-
-//problem: Ink doesn't store the xp value when it is restarted by Unity, how do we upkeep? do we have to set another script?
-{ xp:
-- 0: ->firstConvo
-// - 100: ->secondConvo
-// - 200: ->thirdConvo
-    - else: Don't talk to me // you've talked to the character too much / just an error handler
-}
-
-
+->first
 === first ===
 //starting with Sabrine
 ...Hi
@@ -29,7 +16,7 @@ VAR firstConvo = -> first // in logic cases we need to call a pointer variable f
         uh, no sorry
         // epic fail end of convo
     * * I just wanted to comment on your looksmaxxing, have a good evening m'lady
-        Thanks {playerName}
+        Thanks.
         // a fine save, no more aura lost.
     -> DONE
  * Sorry to bother, are you working on the 3D Game Programming Project? #impact:good
@@ -61,8 +48,8 @@ VAR firstConvo = -> first // in logic cases we need to call a pointer variable f
         Of course! ...anddd I need your email so I can send it.
         Oh uh sure, try smendoza6223@sdsu.edu
         Aaand sent! 
-        Awesome!! {playerName}, right?
-        Yeah, {playerName}, let me know if you have any questions, struggling is part of the process.
+        Awesome!! Thank you.
+        Yeah, let me know if you have any questions, struggling is part of the process.
         Sure, thanks!
         
         

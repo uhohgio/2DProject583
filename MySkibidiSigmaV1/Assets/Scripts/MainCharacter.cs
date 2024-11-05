@@ -27,10 +27,6 @@ public class MainCharacter : MonoBehaviour
     // leaving the game (treated like a girl at least for now)
     [Header("The End")]
     public GameObject doors;
-    [SerializeField] private TextAsset EndDialogue1;
-    private string EndScene = "EndScene";
-
-
     public GameObject PressEText;
     public GameObject LeavePrompt;
     public GameObject gameManagerObject;
@@ -68,11 +64,11 @@ public class MainCharacter : MonoBehaviour
         }
 
         if (((Mathf.Abs(transform.position.x - girl1.transform.position.x) <= 1)
-        && (Mathf.Abs(transform.position.y - girl1.transform.position.y) <= 1)) ||
+        && (Mathf.Abs(transform.position.y - girl1.transform.position.y) <= 1) && (GameManager.GetInstance().talkedTo1 == false)) ||
         ((Mathf.Abs(transform.position.x - girl2.transform.position.x) <= 1)
-        && (Mathf.Abs(transform.position.y - girl2.transform.position.y) <= 1)) ||
+        && (Mathf.Abs(transform.position.y - girl2.transform.position.y) <= 1) && (GameManager.GetInstance().talkedTo2 == false)) ||
         ((Mathf.Abs(transform.position.x - girl3.transform.position.x) <= 1)
-        && (Mathf.Abs(transform.position.y - girl3.transform.position.y) <= 1))
+        && (Mathf.Abs(transform.position.y - girl3.transform.position.y) <= 1) && (GameManager.GetInstance().talkedTo3 == false))
         ) {
                 // prompt interactable
                 PressEText.SetActive(true);
@@ -80,16 +76,16 @@ public class MainCharacter : MonoBehaviour
                 PressEText.SetActive(false);
             }
         // Girl 1 : Sabrine
-        TalkToGirls(girl1, SabrineDialogue1, SabrineScene);
+        TalkToGirls(girl1, SabrineDialogue1, SabrineScene, ref GameManager.GetInstance().talkedTo1);
 
         // Girl 2 : Stacy
-        TalkToGirls(girl2, StacyDialogue1, StacyScene);
+        TalkToGirls(girl2, StacyDialogue1, StacyScene,  ref GameManager.GetInstance().talkedTo2);
 
         // Girl 3 : Trixie
-        TalkToGirls(girl3, TrixieDialogue1, TrixieScene);
+        TalkToGirls(girl3, TrixieDialogue1, TrixieScene,  ref GameManager.GetInstance().talkedTo3);
 
-        // Leave Library
-
+    // Leave Library
+        // leave prompt
         if ((Mathf.Abs(transform.position.x - doors.transform.position.x) <= 1)
         && (Mathf.Abs(transform.position.y - doors.transform.position.y) <= 1)) {
                 // prompt interactable
@@ -97,22 +93,29 @@ public class MainCharacter : MonoBehaviour
             } else {
                 LeavePrompt.SetActive(false);
             }
-
-        TalkToGirls(doors, EndDialogue1, EndScene);
+        // interaction
+        if ((Mathf.Abs(transform.position.x - doors.transform.position.x) <= 1)
+            && (Mathf.Abs(transform.position.y - doors.transform.position.y) <= 1)
+            && Input.GetKeyDown(KeyCode.E)) {
+                // trigger interaction
+                Debug.Log("You left the library");
+                GameManager.GetInstance().endCalled = true;
+            }
     }
 
     // toggles interactions with the NPC's
-    void TalkToGirls(GameObject chosenGirl, TextAsset chosenDialogue, string chosenScene)
+    void TalkToGirls(GameObject chosenGirl, TextAsset chosenDialogue, string chosenScene, ref bool talkedTo)
     {
             
         if ((Mathf.Abs(transform.position.x - chosenGirl.transform.position.x) <= 1)
             && (Mathf.Abs(transform.position.y - chosenGirl.transform.position.y) <= 1)
-            && Input.GetKeyDown(KeyCode.E)) {
+            && Input.GetKeyDown(KeyCode.E) && !(talkedTo)) {
                 // trigger interaction
-                Debug.Log("You said Hi to this girl!");
                 GameManager.GetInstance().currentDialogue = chosenDialogue;
                 GameManager.GetInstance().currentDialogueScene = chosenScene;
                 GameManager.GetInstance().dialogueCalled = true;
+                talkedTo = true;
+                Debug.Log("talked to = " + talkedTo);
             }
     }
 

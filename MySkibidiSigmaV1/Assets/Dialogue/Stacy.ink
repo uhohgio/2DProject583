@@ -1,5 +1,6 @@
 VAR stacyCount = 0
 VAR playerName = "Y/N"
+->stacy_intro
 
 === stacy_intro ===
 "...*you approach Stacy, noticing her scrolling through her phone, nails perfectly done, sipping on a boba. She glances up, giving you a quick once-over*." #speaker: Narrator
@@ -106,7 +107,6 @@ VAR playerName = "Y/N"
                 ~stacyCount = stacyCount + 100
                 "*She raises her boba as if in a toast.* Alright, show me what you’ve got. But if you can’t keep up, don’t blame me if you get left in the dust."
 
-                ->DONE
 
             * * * * *"Tell me what it takes to keep up, and I’ll do it." #impact:good
                 ~stacyCount = stacyCount + 50
@@ -115,7 +115,6 @@ VAR playerName = "Y/N"
                 ~stacyCount = stacyCount + 100
                 "*Her expression relaxes, her smirk returning.* Good answer. Maybe you’re not just here for the boba and the look. Stick around, and I might just let you in on the real Stacy."
 
-                ->DONE
 
     * * *"Maybe I’m saying I want to be part of the drama." #impact:good
         ~stacyCount = stacyCount + 50
@@ -145,13 +144,11 @@ VAR playerName = "Y/N"
                     ~stacyCount = stacyCount + 100
                     "*She laughs, taking another long sip of her boba.* Alright, {playerName}. Guess we’ll see if you can keep up with the main character after all."
 
-                    ->DONE
 
             * * * * * "I’ll just have to surprise you, then." #impact:good
                 ~stacyCount = stacyCount + 50
                 "*She smirks, clearly intrigued.* Surprises? I’m here for it. Keep it interesting, and I’ll see if you’ve got that main character spark after all."
 
-                ->DONE
 
 
 
