@@ -217,17 +217,17 @@ private IEnumerator LoadEndSceneAsync()
 // swaps the title based on the amount of aura the player has
     public string TitleSwapper(int auraCount){
         // values changed for quicker gameplay and results
-        if (auraCount < -500){
+        if (auraCount < -250){
             return "Incel";
-        } else if (auraCount >= -500 && auraCount < 0){
+        } else if (auraCount >= -250 && auraCount < 0){
             return "Gooner";
         } else if (auraCount == 0){
             return "Nobody";
-        } else if (auraCount > 0 && auraCount <= 500){
+        } else if (auraCount > 0 && auraCount <= 250){
             return "Rizzler";
-        } else if (auraCount > 500 && auraCount <= 1000){
+        } else if (auraCount > 250 && auraCount <= 500){
             return "Sigma";
-        } else if (auraCount > 1000){
+        } else if (auraCount > 500){
             return "Alpha Chad";
         }
         return "Nobody";
