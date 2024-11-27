@@ -1,7 +1,10 @@
 # 2DProject583
 
 <h2>Overview: </h2>
+
 This 2D project entitled "My Skibidi Sigma" is a brainrot-inspired dating sim where the main character played by you tries to gain "Aura" by having conversations with girls in a college library setting.
+
+*For all intents and purposes this is a gag and I do not use brain-rotting vocabulary on a regular basis but I did spend far too much time building all of the assets and ideas for this to go overlooked*
 
 <h2>Description: </h2>
 
